@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-export const getAllGames = async (token) => {
+export const getAllGames = async (token:string) => {
     try {
         let config = {
           headers: {
