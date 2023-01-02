@@ -11,7 +11,6 @@ import { getAllGames } from '../../services/axios.js'
 import { getGamesByDate, getPlayedGames, getActiveGames } from '../../utils/query-functions.js'
 
 
-
 /**
  * Encapsulates a controller.
  */

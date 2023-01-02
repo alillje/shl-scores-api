@@ -8,10 +8,6 @@ import express from 'express'
 import { GameController } from '../../../controllers/api/game-controller.js'
 import createError from 'http-errors'
 import { Request, Response, NextFunction } from 'express'
-import axios from 'axios'
-import qs from 'qs'
-
-
 
 export const router = express.Router()
 
@@ -54,11 +50,8 @@ const controller = new GameController()
 // router.get('/', authClient, (req, res, next) => controller.getGames(req, res, next))
 
 /**
- * Auth.
+ * Sets the access token as property on the request object.
  *
- * @param {object} req - Express request object.
- * @param {object} res - Express response object.
- * @param {Function} next - Express next middleware function.
  */
 const setAccessToken = async (req:Request, res:Response, next:NextFunction) => {
     try {
@@ -66,7 +59,7 @@ const setAccessToken = async (req:Request, res:Response, next:NextFunction) => {
             throw new Error('Missing authorization header.')
           }
 
-        const [authenticationScheme, token] = req.headers.authorization?.split(' ')
+        const [authenticationScheme, token] = req.headers.authorization.split(' ')
 
         if (authenticationScheme !== 'Bearer') {
           throw new Error('Invalid authentication scheme.')

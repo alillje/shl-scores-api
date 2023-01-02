@@ -19,10 +19,6 @@ export function getGamesByDate (allGames:Game[], startDate:string) {
 
 /**
 * Gets data for a single game based on ID.
-*
-* @param {object} req - Express request object.
-* @param {object} res - Express response object.
-* @param {Function} next - Express next middleware function.
 */
 export function getActiveGames (allGames:Game[], active:string) {
     const games:Game[] = []
@@ -39,10 +35,6 @@ export function getActiveGames (allGames:Game[], active:string) {
 
 /**
 * Gets data for a single game based on ID.
-*
-* @param {object} req - Express request object.
-* @param {object} res - Express response object.
-* @param {Function} next - Express next middleware function.
 */
 export function getPlayedGames (allGames:Game[], played:string) {
     const games:Game[] = []
