@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npm run build && node dist/server.js",
     "build": "tsc -p .",
-    "dev": "nodemon --inspect -r dotenv/config dist/server.js",
+    "dev": "npm run build && nodemon --inspect -r dotenv/config dist/server.js",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
   },

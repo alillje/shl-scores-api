@@ -1,3 +1,0 @@
-interface Games {
-    games: Game[]
-}

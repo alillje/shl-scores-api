@@ -1,4 +1,4 @@
-type Game = {
+interface Game extends Object {
     "away_team_code": string,
     "away_team_result": Number,
     "game_center_active": boolean,

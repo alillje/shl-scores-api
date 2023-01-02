@@ -2,7 +2,7 @@ import express from 'express'
 import helmet from 'helmet'
 import logger from 'morgan'
 import { router } from './routes/router.js'
-import { Request, Response } from 'express'
+import { Request, Response, ErrorRequestHandler } from 'express'
 
 
 async function start() {
@@ -23,7 +23,7 @@ async function start() {
     app.use('/', router)
 
     // Error handler.
-    app.use(function (err: Error, req: Request, res: Response) {
+    app.use(function (err: any, req: Request, res: Response) {
       err.status = err.status || 500
       // Set error messages depending on status code
       if (err.status === 500) {

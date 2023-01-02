@@ -1,5 +1,5 @@
-interface Error {
-    status?: number,
+    interface ExpressError {
+    status?: number | undefined,
     message: string,
     cause: {
         status?: number,

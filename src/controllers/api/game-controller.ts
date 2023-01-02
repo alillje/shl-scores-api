@@ -19,15 +19,10 @@ import { getAllGames } from '../../services/axios.js'
 export class GameController {
   /**
    * Gets data for a single game based on ID.
-   *
-   * @param {object} req - Express request object.
-   * @param {object} res - Express response object.
-   * @param {Function} next - Express next middleware function.
    */
   async getGames (req: Request, res: Response, next: NextFunction) {
     try {
-      if (req.query) {
-        console.log(req.query)
+      if (req.query.start) {
         this.getGamesByDate(req, res, next)
         return
       } 
@@ -40,24 +35,23 @@ export class GameController {
   }
 
   /**
-   * Gets data for a single game based on ID.
-   *
-   * @param {object} req - Express request object.
-   * @param {object} res - Express response object.
-   * @param {Function} next - Express next middleware function.
+   * Gets data for a single game based on query 'start', indicating the start date.
    */
   async getGamesByDate (req: Request, res: Response, next: NextFunction) {
     try {
-        const data:Games = await getAllGames(req.token)
-        for (const game of data.games) {
-          const game2:Game = game
-          console.log(game.start_date_time)
+        const games:Game[] = await getAllGames(req.token)
+        const gamesByQuery:Game[] = []
+        // Iterate through games, check if date matches query 'start', add matching games
+        for (const game of games) {
+          game.start_date_time.substring(0, 10) === req.query.start && gamesByQuery.push(game)
         }
-        res.status(200).json({ data })
+        res.status(200).json({ gamesByQuery })
       } catch (err: any) {
+        console.log(err)
         let error = createError(404)
         console.log('ERROR IN GAMES BY DATE')
         next(error)
       }
 }
+
 }
