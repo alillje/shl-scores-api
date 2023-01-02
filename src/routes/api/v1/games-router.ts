@@ -64,7 +64,7 @@ const setAccessToken = async (req:Request, res:Response, next:NextFunction) => {
         if (authenticationScheme !== 'Bearer') {
           throw new Error('Invalid authentication scheme.')
         }
-        req.token = token
+        req.accessToken = token
         next()
     }
     catch (err: any) {

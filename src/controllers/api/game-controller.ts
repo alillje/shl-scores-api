@@ -20,7 +20,7 @@ export class GameController {
    */
   async getGames (req: Request, res: Response, next: NextFunction) {
     try {
-      let games = await getAllGames(req.token)
+      let games = await getAllGames(req.accessToken)
 
       if (req.query.start) {
         games = getGamesByDate(games, req.query.start.toString())
