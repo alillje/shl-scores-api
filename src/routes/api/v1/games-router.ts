@@ -65,6 +65,8 @@ const setAccessToken = async (req:Request, res:Response, next:NextFunction) => {
           throw new Error('Invalid authentication scheme.')
         }
         req.accessToken = token
+        console.log(req.accessToken)
+
         next()
     }
     catch (err: any) {
@@ -74,5 +76,6 @@ const setAccessToken = async (req:Request, res:Response, next:NextFunction) => {
         next(error)
     }
 }
-
+// router.param('id', (req, res, next) => controller.loadGame(req, res, next))
 router.get('/', setAccessToken, (req, res, next) => controller.getGames(req, res, next))
+router.get('/:id', setAccessToken, (req, res, next) => controller.getGame(req, res, next))

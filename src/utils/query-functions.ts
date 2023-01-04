@@ -11,16 +11,15 @@
 export function getGamesByDate (allGames:Game[], startDate:string) {
     const games:Game[] = []
     // Iterate through games, check if date matches query 'start', add matching games
-    const requestedStartDate = new Date(startDate)
+    // const requestedStartDate = new Date(startDate)
 
     for (const game of allGames) {
-      const currentGameDate = new Date(game.start_date_time.substring(0, 10))
+      // const currentGameDate = new Date(game.start_date_time.substring(0, 10))
       // TODO: Implement end date
-      if (currentGameDate.getTime() === requestedStartDate.getTime()) {
-      console.log('Querydate: ' + startDate + ' ' + requestedStartDate.getTime())
-      console.log('CurrentgameDate: ' + game.start_date_time.substring(0, 10) + ' ' + currentGameDate.getTime())
-      }
-
+      // if (currentGameDate.getTime() === requestedStartDate.getTime()) {
+      // console.log('Querydate: ' + startDate + ' ' + requestedStartDate.getTime())
+      // console.log('CurrentgameDate: ' + game.start_date_time.substring(0, 10) + ' ' + currentGameDate.getTime())
+      // }
       game.start_date_time.substring(0, 10) === startDate && games.push(game)
     }
     return games

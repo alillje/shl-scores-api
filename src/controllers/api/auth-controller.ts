@@ -19,7 +19,6 @@ export class AuthController {
    */
   async authorize (req: Request, res: Response, next: NextFunction) {
     try {
-        console.log('test')
         const data = { 
         'client_id': req.body.client_id, 
         'client_secret': req.body.client_secret,
